@@ -14,7 +14,8 @@ struct DetailsView: View {
             Text(post.title).font(.title3).fontWeight(.bold)
             Text(post.body).font(.caption)
             Spacer()
-        }
+        }.navigationTitle("Post details")
+            .navigationBarTitleDisplayMode(.inline)
         
         
     }

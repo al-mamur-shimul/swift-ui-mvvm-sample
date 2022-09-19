@@ -11,7 +11,9 @@ import SwiftUI
 struct PostsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                PostListView()
+            }
         }
     }
 }
