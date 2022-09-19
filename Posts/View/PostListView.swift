@@ -9,47 +9,45 @@ import SwiftUI
 import Combine
 
 struct PostListView: View {
-    
+
     @ObservedObject var postViewModel: PostViewModel = PostViewModel()
-    
-    
+
+
     var body: some View {
-        
-        if postViewModel.postListFetchState.isLoading && postViewModel.postListFetchState.error == nil{
+
+        if postViewModel.postListFetchState.isLoading && postViewModel.postListFetchState.error == nil {
             HStack(alignment: VerticalAlignment.center) {
                 ProgressView()
-                    .foregroundColor(.white)
-                    .padding(.all, 20)
-                    .background(.gray.opacity(0.5))
-                    .navigationTitle(Text("Posts"))
-                .navigationBarTitleDisplayMode(.large)
+                        .foregroundColor(.white)
+                        .padding(.all, 20)
+                        .background(.gray.opacity(0.5))
+                        .navigationTitle(Text("Posts"))
+                        .navigationBarTitleDisplayMode(.large)
             }
-        }
-        else if !postViewModel.postListFetchState.isLoading && postViewModel.postListFetchState.error != nil{
+        } else if !postViewModel.postListFetchState.isLoading && postViewModel.postListFetchState.error != nil {
             HStack(alignment: VerticalAlignment.center, spacing: 16.0) {
-                VStack{
+                VStack {
                     Image(systemName: "x.circle").resizable()
-                        .frame(width: 40, height: 40)
+                            .frame(width: 40, height: 40)
                     Text(postViewModel.postListFetchState.error?.localizedDescription ?? "").padding()
-                        .multilineTextAlignment(.center)
+                            .multilineTextAlignment(.center)
                 }
-                .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitleDisplayMode(.large)
             }
-        }
-        else{
-            List(postViewModel.postListFetchState.posts){ post in
-                NavigationLink(destination: DetailsView(post: post)){
+        } else {
+            List(postViewModel.postListFetchState.posts) { post in
+                NavigationLink(destination: DetailsView(post: post)) {
                     PostRow(post: post)
                 }
-            }.listStyle(.plain)
-            .navigationTitle(Text("Posts"))
-                .navigationBarTitleDisplayMode(.large)
+            }
+                    .listStyle(.plain)
+                    .navigationTitle(Text("Posts"))
+                    .navigationBarTitleDisplayMode(.large)
         }
-        
-    
-        
+
+
     }
-    
+
     struct PostListView_Preview: PreviewProvider {
         static var previews: some View {
             PostListView()

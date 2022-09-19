@@ -10,9 +10,9 @@ import SwiftUI
 struct PostRow: View {
     let post: Post
     var body: some View {
-        HStack{
+        HStack {
             Text(String(post.id)).font(.title).padding(.trailing, 12)
-            VStack(alignment: .leading){
+            VStack(alignment: .leading) {
                 Text(post.title).font(.title3).fontWeight(.bold).lineLimit(2).padding(.bottom, 2)
                 Text(post.body).font(.caption).lineLimit(3)
             }

@@ -10,14 +10,15 @@ import SwiftUI
 struct DetailsView: View {
     let post: Post
     var body: some View {
-        VStack(alignment: .leading, spacing: 16){
+        VStack(alignment: .leading, spacing: 16) {
             Text(post.title).font(.title3).fontWeight(.bold)
             Text(post.body).font(.caption)
             Spacer()
-        }.navigationTitle("Post details")
-            .navigationBarTitleDisplayMode(.inline)
-        
-        
+        }
+                .navigationTitle("Post details")
+                .navigationBarTitleDisplayMode(.inline)
+
+
     }
 }
 

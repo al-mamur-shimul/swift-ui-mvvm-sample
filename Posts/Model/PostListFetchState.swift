@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct PostListFetchState{
+struct PostListFetchState {
     var posts: [Post] = []
     var error: Error?
     var isLoading: Bool = true
-    
+
     init(posts: [Post], error: Error? = nil, isLoading: Bool) {
         self.posts = posts
         self.error = error
